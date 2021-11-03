@@ -27,6 +27,9 @@ for prompt in prompt_list:
         gpt3_prompt = gpt3_prompt + person + utterance
         person1 = not person1
 
+    person = "\nPerson1: " if person1 else "\nPerson2: "
+    gpt3_prompt += person
+
     gpt3_prompts.append(gpt3_prompt)
 
 # Generate responses
