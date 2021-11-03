@@ -35,7 +35,7 @@ restart_sequence = "\nPerson2: "
 
 responses = []
 
-for prompt in gpt3_prompts[:5]:
+for prompt in gpt3_prompts:
     response = openai.Completion.create(
     engine="davinci",
     #prompt="The following is a conversation between two people.\nHuman: Hello, who are you?\nAI: I am an AI created by OpenAI. How can I help you today?\nHuman: I'd like to cancel my subscription.\nAI:",
@@ -49,6 +49,9 @@ for prompt in gpt3_prompts[:5]:
     )
 
     text = response.get("choices")[0].get("text") 
+    
+    if text == "":
+        text = "no reponse"
     print(text)
     responses.append(text)
 
