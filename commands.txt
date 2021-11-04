@@ -1,0 +1,22 @@
+srun --time=2:30:00 --mem=64GB --gres=gpu:1 --cpus-per-task=16 --pty /bin/bash
+
+python3 parlai/scripts/safe_interactive.py -t blended_skill_talk -mf zoo:blender/blender_3B/model --include-personas False -sc True -scip ./dailydialogs_prompts.txt -scop test_response.txt  --chateval-multi True --dbdc True
+
+
+BLENDER (moved safe_interactive.py outside)
+
+Added two function definitions parlai_script and validate to world.py
+
+python3 safe_interactive.py -t blended_skill_talk -mf zoo:blender/blender_3B/model --include-personas False -sc True -scip ./dailydialogs_prompts.txt -scop model_response  --chateval-multi True 
+
+
+
+
+Import pdb;pdb.set_trace()
+
+
+export PYTHONPATH=$PWD:$PWD/parlai
+
+Mkdir testing
+
+python parlai/scripts/safe_interactive.py -t blended_skill_talk -mf zoo:blender/blender_3B/model --include-personas True -sc True -scip ../ParlAI_blender/chateval/ncm.txt  -scop testing --chateval-multi false  --single-turn true --chateval-multi-num 0
