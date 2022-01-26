@@ -71,7 +71,7 @@ for prompt in gpt3_prompts:
     frequency_penalty=0.0,
     presence_penalty=0.6,
     )
-    text = response.get("choices")[0].get("text") 
+    text = response.get("choices")[0].get("text").split('\n')[0]
     
     if text == "":
         text = "no reponse"
